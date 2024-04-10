@@ -1,0 +1,22 @@
+{% if member_list %}
+        {% for member in member_list %}
+            {% if forloop.first %}
+    <table border="1">
+        <tr>
+            <td>번호</td>
+            <td>이름</td>
+        </tr>
+            {% endif %}
+        <tr>
+
+            <td>{{ forloop.counter }}</td>
+            <td><a href="/kingchobo/{{ member.id }}/">{{ member.name }}</a></td>
+        </tr>
+            {% if forloop.last %}
+        </table>
+            {% endif %}
+        {% endfor %}
+
+{% else %}
+    <p>회원 데이터가 없습니다.</p>
+{% endif %}
