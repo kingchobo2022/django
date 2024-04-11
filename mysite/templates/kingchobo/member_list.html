@@ -10,7 +10,7 @@
         <tr>
 
             <td>{{ forloop.counter }}</td>
-            <td><a href="/kingchobo/{{ member.id }}/">{{ member.name }}</a></td>
+            <td><a href="{% url 'kingchobo:detail' member.id %}">{{ member.name }}</a></td>
         </tr>
             {% if forloop.last %}
         </table>

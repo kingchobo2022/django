@@ -16,3 +16,6 @@ def detail(request, member_id):
 
     context = { 'member' : member }
     return render(request, 'kingchobo/member_detail.html', context)
+
+def input(request):
+    return render(request, 'kingchobo/member_input.html')
