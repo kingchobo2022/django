@@ -1,4 +1,4 @@
-#from django.http import HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Member
 
@@ -19,3 +19,10 @@ def detail(request, member_id):
 
 def input(request):
     return render(request, 'kingchobo/member_input.html')
+
+def create(request):
+    name = request.POST['name']
+    email = request.POST['email']
+    profile = request.POST['profile']
+
+    return HttpResponse(f'{name}:{email}:{profile}')
