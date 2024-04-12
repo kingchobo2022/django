@@ -1,5 +1,6 @@
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+#from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 from .models import Member
 
 
@@ -21,8 +22,11 @@ def input(request):
     return render(request, 'kingchobo/member_input.html')
 
 def create(request):
-    name = request.POST['name']
-    email = request.POST['email']
-    profile = request.POST['profile']
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    profile = request.POST.get('profile')
 
-    return HttpResponse(f'{name}:{email}:{profile}')
+    new_member = Member(name=name, email=email, profile=profile, create_date=timezone.now() )
+    new_member.save()
+
+    return redirect('kingchobo:detail', member_id=new_member.id)
