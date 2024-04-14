@@ -34,3 +34,23 @@ def delete(request, member_id):
     member = get_object_or_404(Member, pk=member_id)
     member.delete()
     return redirect('kingchobo:index')
+
+def ediform(request, member_id):
+    member = get_object_or_404(Member, pk=member_id)
+    context = { 'member' : member }
+    return render(request, 'kingchobo/member_edit.html', context)
+
+def edit(request):
+    id = request.POST.get('id')
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    profile = request.POST.get('profile')
+
+    member = get_object_or_404(Member, pk=id)
+    member.name = name
+    member.email = email
+    member.profile = profile
+    member.save()
+
+    return redirect('kingchobo:index')
+
