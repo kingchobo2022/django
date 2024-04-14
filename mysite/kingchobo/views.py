@@ -1,4 +1,3 @@
-#from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Member
@@ -26,7 +25,7 @@ def create(request):
     email = request.POST.get('email')
     profile = request.POST.get('profile')
 
-    new_member = Member(name=name, email=email, profile=profile, create_date=timezone.now() )
+    new_member = Member(name=name, email=email, profile=profile, create_date=timezone.now())
     new_member.save()
 
     return redirect('kingchobo:detail', member_id=new_member.id)
