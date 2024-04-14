@@ -8,12 +8,14 @@
         <tr>
             <td>번호</td>
             <td>이름</td>
+            <td>처리</td>
         </tr>
             {% endif %}
         <tr>
 
             <td>{{ forloop.counter }}</td>
             <td><a href="{% url 'kingchobo:detail' member.id %}">{{ member.name }}</a></td>
+            <td><a href="{% url 'kingchobo:delete' member.id %}">삭제</a></td>
         </tr>
             {% if forloop.last %}
         </table>

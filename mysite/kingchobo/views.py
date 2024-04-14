@@ -29,3 +29,8 @@ def create(request):
     new_member.save()
 
     return redirect('kingchobo:detail', member_id=new_member.id)
+
+def delete(request, member_id):
+    member = get_object_or_404(Member, pk=member_id)
+    member.delete()
+    return redirect('kingchobo:index')
