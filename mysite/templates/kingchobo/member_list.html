@@ -1,14 +1,14 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'style.css' %}">
-
-<a href="{% url 'kingchobo:input' %}">입력하기</a>
+<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+<div class="container mt-3">
+<a href="{% url 'kingchobo:input' %}" class="btn btn-primary mb-3">입력하기</a>
 
 {% if member_list %}
         {% for member in member_list %}
             {% if forloop.first %}
-    <table border="1">
-        <tr>
+    <table class="table">
+        <tr class="table-dark">
             <td>번호</td>
             <td>이름</td>
             <td colspan="2">처리</td>
@@ -29,3 +29,4 @@
 {% else %}
     <p>회원 데이터가 없습니다.</p>
 {% endif %}
+</div>
